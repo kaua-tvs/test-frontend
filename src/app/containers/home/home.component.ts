@@ -23,7 +23,7 @@ export class HomeComponent {
     submitCreate(employee: EmployeeModel) {
         this.msgAlertCreate = Validation.hasRe(employee.re, this.employeeList);
         if (!this.msgAlertCreate) {
-            employee.id = this.employeeList.length + 1;
+            employee.id = this.employeeList[this.employeeList.length - 1]?.id ? this.employeeList[this.employeeList.length - 1].id + 1 : this.employeeList.length + 1;
             this.employeeList.push(employee);
             this.update.cleanForm();
             document.getElementById('btn-close')?.click();
