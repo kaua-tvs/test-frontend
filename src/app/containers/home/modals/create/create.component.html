@@ -28,6 +28,7 @@
               <div class="col-md-6">
                 <label class='form-label label-font-bold'>Cargo</label>
                 <select formControlName='functionEmployee' class="custom-select">
+                  <option [ngValue]='null' >Selecione</option>
                   <option *ngFor='let item of mockFunctionEmployee' value="{{item.id}}">
                     {{item.name}}
                   </option>
