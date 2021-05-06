@@ -16,7 +16,7 @@ export class HomeComponent {
     employee: EmployeeModel| any;
     msgAlertCreate: string = '';
     employeeList: Array<EmployeeModel> = new Array<EmployeeModel>();
-
+    mockFunctionEmployee: Array<any> = this.dropMockFunctionEmployee();
     constructor(){
     }
 
@@ -37,6 +37,7 @@ export class HomeComponent {
                     f.client = employee.client;
                     f.name = employee.name;
                     f.functionEmployee = employee.functionEmployee;
+                    f.functionEmployeeId = employee.functionEmployeeId;
                     f.re = employee.re;
                 }
             });
@@ -72,5 +73,22 @@ export class HomeComponent {
             this.employee = employee || {};
             return;
         }
+    }
+
+    private dropMockFunctionEmployee(){
+        return [
+            {
+                id: 1,
+                name: 'Analista Desenvolvedor'
+            },
+            {
+                id: 2,
+                name: 'Analista Redes'
+            },
+            {
+                id: 3,
+                name: 'Suporte'
+            },
+        ]
     }
 }

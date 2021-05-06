@@ -12,28 +12,32 @@
           </div>
           <form [formGroup]="form" (submit)='create()'>
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-6">
+                <label class='form-label label-font-bold'>Registro Empregado</label>
+                <input type="text" class='form-control' maxlength="10" (keyup)='removeChar($event)'
+                  placeholder="Digite o RE do Funcionario" formControlName='re'>
+              </div>
+
+              <div class="col-md-6">
                 <label class='form-label label-font-bold'>Nome do Funtionario</label>
                 <input type="text" class='form-control' placeholder="Digite o Nome do Funcionario" maxlength="100"
                   formControlName='name'>
               </div>
-
-              <div class="col-md-3">
+            </div>
+            <div class="row">
+              <div class="col-md-6">
                 <label class='form-label label-font-bold'>Cargo</label>
-                <input type="text" class='form-control' placeholder="Digite o Cargo" maxlength="40"
-                  formControlName='functionEmployee'>
+                <select formControlName='functionEmployee' class="custom-select">
+                  <option *ngFor='let item of mockFunctionEmployee' value="{{item.id}}">
+                    {{item.name}}
+                  </option>
+                </select>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-md-6">
                 <label class='form-label label-font-bold'>Cliente</label>
                 <input type="text" class='form-control' maxlength="40" placeholder="Digite o Nome Clinte"
                   formControlName='client'>
-              </div>
-
-              <div class="col-md-3">
-                <label class='form-label label-font-bold'>Registro Empregado</label>
-                <input type="text" class='form-control' maxlength="10" (keyup)='removeChar($event)'
-                  placeholder="Digite o RE do Funcionario" formControlName='re'>
               </div>
             </div>
 

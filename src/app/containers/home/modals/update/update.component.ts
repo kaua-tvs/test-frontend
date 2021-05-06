@@ -16,6 +16,7 @@ export class UpdateComponent {
     @ViewChild('content') content: ElementRef | any;
     @Input() msgAlert: string = '';
     @Input() employee_selected: any;
+    @Input() mockFunctionEmployee: Array<any> = [];
     form: FormGroup;
     closeResult: string = '';
 
@@ -24,6 +25,7 @@ export class UpdateComponent {
             id: new FormControl(''),
             name: new FormControl('', [Validators.required]),
             functionEmployee: new FormControl('', [Validators.required]),
+            functionEmployeeId: new FormControl('', [Validators.required]),
             client: new FormControl('', [Validators.required]),
             re: new FormControl({value: '', disabled: true})
         });
@@ -35,11 +37,13 @@ export class UpdateComponent {
             this.msgAlert = '';
             const employeeList: EmployeeModel = {
                 client: this.form.controls.client.value,
-                functionEmployee: this.form.controls.client.value,
-                name: this.form.controls.client.value,
+                functionEmployee: this.mockFunctionEmployee.find(f => f.id === parseInt(this.form.controls.functionEmployeeId.value)).name,
+                functionEmployeeId: this.mockFunctionEmployee.find(f => f.id === parseInt(this.form.controls.functionEmployeeId.value)).id,
+                name: this.form.controls.name.value,
                 re: this.employee_selected.re,
                 id: this.form.controls.id.value
             };
+            console.log('update',employeeList)
             this.submitForm.emit(employeeList);
         } else {
             this.checkFieldInvalid();
@@ -65,7 +69,7 @@ export class UpdateComponent {
     open() {
         this.form.reset();
         this.mountForm();
-        let size = 'xl';
+        let size = 'md';
 
         this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title', size: size, centered: true }).result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
@@ -79,6 +83,7 @@ export class UpdateComponent {
         this.form.controls.name.setValue(this.employee_selected.name);
         this.form.controls.client.setValue(this.employee_selected.client);
         this.form.controls.functionEmployee.setValue(this.employee_selected.functionEmployee);
+        this.form.controls.functionEmployeeId.setValue(this.employee_selected.functionEmployeeId);
         this.form.controls.re.setValue(this.employee_selected.re);
     }
 

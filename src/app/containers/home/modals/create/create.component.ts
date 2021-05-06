@@ -15,6 +15,7 @@ export class CreateComponent {
     @Output() submitForm: EventEmitter<EmployeeModel> = new EventEmitter<EmployeeModel>();
     @ViewChild('content') content: ElementRef | any;
     @Input() msgAlert: string = '';
+    @Input() mockFunctionEmployee: Array<any> = [];
     form: FormGroup;
     closeResult = '';
 
@@ -31,14 +32,16 @@ export class CreateComponent {
 
         if (this.form.valid) {
             this.msgAlert = '';
-            const employeeList: EmployeeModel = {
+
+            const employee: EmployeeModel = {
                 client: this.form.controls.client.value,
-                functionEmployee: this.form.controls.client.value,
-                name: this.form.controls.client.value,
+                functionEmployee: this.mockFunctionEmployee.find(f => f.id === parseInt(this.form.controls.functionEmployee.value)).name,
+                functionEmployeeId: this.mockFunctionEmployee.find(f => f.id === parseInt(this.form.controls.functionEmployee.value)).id,
+                name: this.form.controls.name.value,
                 re: this.form.controls.re.value,
                 id: 0
             };
-            this.submitForm.emit(employeeList);
+            this.submitForm.emit(employee);
             
         } else {
             this.checkFieldInvalid();
@@ -64,7 +67,7 @@ export class CreateComponent {
     open() {
         this.form.reset();
     
-        let size = 'xl';
+        let size = 'md';
 
         this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title', size: size, centered: true }).result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
