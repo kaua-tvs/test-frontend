@@ -65,6 +65,7 @@ export class CreateComponent {
     }
 
     open() {
+        this.msgAlert = '';
         this.form.reset();
     
         let size = 'md';
