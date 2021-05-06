@@ -65,7 +65,6 @@ export class UpdateComponent {
     open() {
         this.form.reset();
         this.mountForm();
-        console.log('employee_selected', this.employee_selected)
         let size = 'xl';
 
         this.modalService.open(this.content, { ariaLabelledBy: 'modal-basic-title', size: size, centered: true }).result.then((result) => {

@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from "@angular/core";
 import { EmployeeModel } from "src/app/shared/models/employee.models";
 import { Validation } from "src/app/util/Validation";
-import { CreateComponent } from "./create/create.component";
+import { CreateComponent } from "./modals/create/create.component";
 
 @Component({
     selector: 'home',
