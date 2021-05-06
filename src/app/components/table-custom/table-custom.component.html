@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>RE</th>
+      <th>Nome Funcionario</th>
+      <th>Cargo</th>
+      <th>Cliente</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let employee of listEmployee; let index = index'>
+      <td>{{employee.re}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.functionEmployee}}</td>
+      <td>{{employee.client}}</td>
+      <td> 
+        <label (click)='delete(index + 1, employee.id)' class="labels-actions">Excluir <i class="bi bi-trash"></i></label> | <label (click)='update(employee.id)' class="labels-actions">Editar <i class="bi bi-box-arrow-in-right"></i></label>
+    </tr>
+  </tbody>
+</table>

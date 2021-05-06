@@ -1,0 +1,63 @@
+<ng-template #content let-modal>
+
+  <div class="modal-header">
+    <label class="label-header">Cadastrar</label>
+  </div>
+
+  <div class="modal-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <div class="alert alert-danger" *ngIf='msgAlert' role="alert" [innerHtml]='msgAlert'>
+          </div>
+          <form [formGroup]="form" (submit)='create()'>
+            <div class="row">
+              <div class="col-md-3">
+                <label class='form-label label-font-bold'>Nome do Funtionario</label>
+                <input type="text" class='form-control' placeholder="Digite o Nome do Funcionario" maxlength="100"
+                  formControlName='name'>
+              </div>
+
+              <div class="col-md-3">
+                <label class='form-label label-font-bold'>Cargo</label>
+                <input type="text" class='form-control' placeholder="Digite o Cargo" maxlength="40"
+                  formControlName='functionEmployee'>
+              </div>
+
+              <div class="col-md-3">
+                <label class='form-label label-font-bold'>Cliente</label>
+                <input type="text" class='form-control' maxlength="40" placeholder="Digite o Nome Clinte"
+                  formControlName='client'>
+              </div>
+
+              <div class="col-md-3">
+                <label class='form-label label-font-bold'>Registro Empregado</label>
+                <input type="text" class='form-control' maxlength="10" (keyup)='removeChar($event)'
+                  placeholder="Digite o RE do Funcionario" formControlName='re'>
+              </div>
+            </div>
+
+            <div class="col-md-12  mt-5 row">
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-primary col-md-12 ">
+                  Enviar
+                </button>
+              </div>
+              <div class="col-md-4">
+                <button type="button" class="btn btn-primary btn-cancel col-md-12 " id="btn-close" (click)="modal.dismiss('Cross click')" >
+                  Cancelar
+                </button>
+              </div>              
+              <div class="col-md-4">
+                <button (click)='cleanForm()' type="button" class="btn btn-ligth col-md-12">
+                  Limpar Campos
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-template>
