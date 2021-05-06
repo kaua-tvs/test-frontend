@@ -16,8 +16,6 @@ export class HomeComponent {
     employee: EmployeeModel| any;
     msgAlertCreate: string = '';
     employeeList: Array<EmployeeModel> = new Array<EmployeeModel>();
-    showCreate: string = 'none';
-    showBtnActions: string = 'flex';
 
     constructor(){
     }
@@ -45,11 +43,6 @@ export class HomeComponent {
             this.create.cleanForm();
             document.getElementById('btn-close')?.click();
         }
-    }
-
-    showFormCreate() {
-        this.showCreate = 'block';
-        this.showBtnActions = 'none';
     }
 
     showFormUpdate(id: number){
